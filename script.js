@@ -1,3 +1,6 @@
+var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugitive", "Armageddon", "The Ten Commandments", "It (1990)", "Office Space"]
+
+
 var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
 // var longText = document.getElementById("longitude");
