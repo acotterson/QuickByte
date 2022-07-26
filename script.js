@@ -1,4 +1,5 @@
-var foodButton = document.getElementById("foodButton")
+var foodButton = document.getElementById("foodButton");
+var restaurantDiv = document.getElementById("restaurant-div")
 var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugitive", "Armageddon", "The Ten Commandments", "It (1990)", "Office Space"]
 
 // var clientId = "YYWJyEGNmX3-tIsEH8Pf7w";
@@ -17,7 +18,7 @@ function foodOptions() {
   navigator.geolocation.getCurrentPosition(function(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitude="+ lat +"&longitude=" + long;
+    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitude="+ lat +"&longitude=" + long;
     $.ajax( {
       url:yelp,
       headers: {
@@ -28,6 +29,30 @@ function foodOptions() {
       }
     }).then(function(data){
       console.log(data)
+
+      for (let i = 0; i < data.length; i++){
+        var optionDiv = document.createElement("div");
+        optionDiv.addClass("container");
+        var name = document.createElement("h3")
+        var price = document.createElement("p")
+        var phone = document.createElement("p")
+        var genre = document.createElement("p")
+
+        name.textContent = data.businesses.name.value;
+        price.textContent = data.businesses.price.value;
+        phone.textContent = data.businesses.display_phone.value;
+        genre.textContent = data.businesses.categories[0].title.value;
+
+        optionDiv.append(name);
+        optionDiv.append(price);
+        optionDiv.append(phone);
+        optionDiv.append(genre);
+
+        restaurantDiv.append(optionDiv);
+
+        console.log(data.businesses.name.value);
+      }
+
     })
     
     console.log(lat.toFixed(2))
