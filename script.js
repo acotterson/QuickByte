@@ -6,7 +6,7 @@ var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugit
 var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx";
 var lat;
 var long;
-var yelp = "https://thingproxy.freeboard.io/fetch/https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitutde="+ lat +"&longitude=" + long;
+var yelp = "https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitutde="+ lat +"&longitude=" + long;
 
 var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
