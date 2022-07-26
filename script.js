@@ -17,17 +17,15 @@ function foodOptions() {
   navigator.geolocation.getCurrentPosition(function(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitutde="+ lat +"&longitude=" + long + "&Authorization" +APIKey;
+    var yelp = "https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitude="+ lat +"&longitude=" + long;
     $.ajax( {
       url:yelp,
-      header: {
+      headers: {
         "Authorization": 'Bearer JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx',
         "accept": "application/json",
         "x-requested-with": "xmlhttprequest",
         "Access-Control-Allow-Origin":"*",
       }
-    }).then(function (response){
-      return response.json()
     }).then(function(data){
       console.log(data)
     })
