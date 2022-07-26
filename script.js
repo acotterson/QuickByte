@@ -18,7 +18,8 @@ function foodOptions() {
     lat = position.coords.latitude;
     long = position.coords.longitude;
     var yelp = "https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitutde="+ lat +"&longitude=" + long + "&Authorization" +APIKey;
-    fetch(yelp, {
+    $.ajax( {
+      url:yelp,
       header: {
         "Authorization": 'Bearer JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx',
         "accept": "application/json",
