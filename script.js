@@ -12,13 +12,13 @@ var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
 // var longText = document.getElementById("longitude");
 
-foodButton.addEventListener("click", foodOptions())
+foodButton.addEventListener("click", foodOptions)
 
 function foodOptions() {
   navigator.geolocation.getCurrentPosition(function(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=10&open_now=true&latitude="+ lat +"&longitude=" + long;
+    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=3&open_now=true&latitude="+ lat +"&longitude=" + long;
     $.ajax( {
       url:yelp,
       headers: {
@@ -30,18 +30,18 @@ function foodOptions() {
     }).then(function(data){
       console.log(data)
 
-      for (let i = 0; i < data.length; i++){
+      for (let i = 0; i < data.businesses.length; i++){
         var optionDiv = document.createElement("div");
-        optionDiv.addClass("container");
+        optionDiv.classList.add("container");
         var name = document.createElement("h3")
         var price = document.createElement("p")
         var phone = document.createElement("p")
         var genre = document.createElement("p")
 
-        name.textContent = data.businesses.name.value;
-        price.textContent = data.businesses.price.value;
-        phone.textContent = data.businesses.display_phone.value;
-        genre.textContent = data.businesses.categories[0].title.value;
+        name.textContent = data.businesses[i].name;
+        price.textContent = data.businesses[i].price;
+        phone.textContent = data.businesses[i].display_phone;
+        genre.textContent = data.businesses[i].categories[0].title;
 
         optionDiv.append(name);
         optionDiv.append(price);
@@ -49,8 +49,7 @@ function foodOptions() {
         optionDiv.append(genre);
 
         restaurantDiv.append(optionDiv);
-
-        console.log(data.businesses.name.value);
+       
       }
 
     })
