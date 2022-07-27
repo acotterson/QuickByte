@@ -13,12 +13,19 @@ var button = document.getElementById("get-location");
 // var longText = document.getElementById("longitude");
 
 foodButton.addEventListener("click", foodOptions)
+$(".dropdown").on("click", "button", catHandler)
 
-function foodOptions() {
+function catHandler() {
+  var cat = $(this).attr("id")
+  foodOptions(cat)
+}
+
+function foodOptions(cat) {
+  $("#restaurant-div").empty();
   navigator.geolocation.getCurrentPosition(function(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?catagories=food,desserts&limit=5&open_now=true&latitude="+ lat +"&longitude=" + long;
+    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude="+ lat +"&longitude=" + long;
     $.ajax( {
       url:yelp,
       headers: {
