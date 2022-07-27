@@ -34,25 +34,25 @@ function foodOptions() {
         var optionDiv = document.createElement("div");
         optionDiv.classList.add("subtitle");
         
-        var nameButton = document.createElement("button");
+        var name = document.createElement("a");
         var price = document.createElement("p");
         var phone = document.createElement("p");
         var genre = document.createElement("p");
         
-        nameButton.textContent = data.businesses[i].name;
+        name.textContent = data.businesses[i].name;
         price.textContent = data.businesses[i].price;
         phone.textContent = data.businesses[i].display_phone;
         genre.textContent = data.businesses[i].categories[0].title;
         
-        optionDiv.append(nameButton);
+        optionDiv.append(name);
         optionDiv.append(genre);
         optionDiv.append(phone);
         optionDiv.append(price);
         
-        nameButton.classList.add("button-result");
+        name.classList.add("button-result");
         restaurantDiv.append(optionDiv);
        
-        nameButton.addEventListener("click", foodPage)
+        name.addEventListener("click", foodPage)
         function foodPage() {
           window.open(data.businesses[i].url);
           }
