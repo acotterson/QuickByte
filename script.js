@@ -12,7 +12,7 @@ var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
 // var longText = document.getElementById("longitude");
 
-foodButton.addEventListener("click", foodOptions)
+// foodButton.addEventListener("click", foodOptions)
 $(".dropdown").on("click", "button", catHandler)
 
 function catHandler() {
@@ -74,3 +74,4 @@ function foodOptions(cat) {
     // longText.innerText = long.toFixed(2);
   });
 };
+
