@@ -45,16 +45,22 @@ function foodOptions(cat) {
         var price = document.createElement("p");
         var phone = document.createElement("p");
         var genre = document.createElement("p");
+        var favButton = document.createElement("button");
         
         name.textContent = data.businesses[i].name;
         price.textContent = data.businesses[i].price;
         phone.textContent = data.businesses[i].display_phone;
         genre.textContent = data.businesses[i].categories[0].title;
+        favButton.textContent = "Add to Favorites";
+        favButton.classList.add("button");
+        favButton.classList.add("is-warning");
+        favButton.classList.add("is-small");
         
         optionDiv.append(name);
         optionDiv.append(genre);
         optionDiv.append(phone);
         optionDiv.append(price);
+        optionDiv.append(favButton);
         
         name.classList.add("button-result");
         restaurantDiv.append(optionDiv);
