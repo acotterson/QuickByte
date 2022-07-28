@@ -48,6 +48,8 @@ function foodOptions(cat) {
         var favButton = document.createElement("button");
         
         name.textContent = data.businesses[i].name;
+        name.setAttribute("href", data.businesses[i].url); // I added this in stead of the event listener for the link so that the link gets saved into local storage. I was worried the scope will get screwed up otherwise.
+        name.setAttribute("target", "_blank");
         price.textContent = data.businesses[i].price;
         phone.textContent = data.businesses[i].display_phone;
         genre.textContent = data.businesses[i].categories[0].title;
@@ -71,14 +73,15 @@ function foodOptions(cat) {
         favButton.addEventListener("click", addFavorite);
 
         function addFavorite(event){
-          var favSelect = event.target.parentNode; 
+          var favSelect = event.target.parentNode.innerHTML;
+          console.log(favSelect);
           localStorage.setItem("favSelect", JSON.stringify(favSelect)); //its saving an empty object to local storage
         }
        
-        name.addEventListener("click", foodPage)
-        function foodPage() {
-          window.open(data.businesses[i].url);
-          }
+        // name.addEventListener("click", foodPage)
+        // function foodPage() {
+          // window.open(data.businesses[i].url);
+        //   }
         
       }
       
