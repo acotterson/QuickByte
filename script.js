@@ -51,10 +51,12 @@ function foodOptions(cat) {
         price.textContent = data.businesses[i].price;
         phone.textContent = data.businesses[i].display_phone;
         genre.textContent = data.businesses[i].categories[0].title;
+        
         favButton.textContent = "Add to Favorites";
         favButton.classList.add("button");
         favButton.classList.add("is-warning");
         favButton.classList.add("is-small");
+       
         
         optionDiv.append(name);
         optionDiv.append(genre);
@@ -64,6 +66,14 @@ function foodOptions(cat) {
         
         name.classList.add("button-result");
         restaurantDiv.append(optionDiv);
+        console.log(optionDiv)
+
+        favButton.addEventListener("click", addFavorite);
+
+        function addFavorite(event){
+          var favSelect = event.target.parentNode; 
+          localStorage.setItem("favSelect", JSON.stringify(favSelect)); //its saving an empty object to local storage
+        }
        
         name.addEventListener("click", foodPage)
         function foodPage() {
