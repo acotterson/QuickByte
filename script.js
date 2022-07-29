@@ -9,6 +9,7 @@ var lat;
 var long;
 var storedFavArr = [];
 var storedFavorites = JSON.parse(localStorage.getItem("storedFavArr")) || [];
+console.log(storedFavorites);
 
 
 var dropdown = document.querySelector('.dropdown');
@@ -114,26 +115,33 @@ function foodOptions(cat) {
   });
 };
 
-// function renderFavorites(){
-//   $("#favorites").empty();
-//   for ( let i = 0; i < storedFavorites; i++){
-//     console.log(storedFavorites);
-//     var favDiv = document.createElement("div");
-//         favDiv.classList.add("subtitle");
-//         fav.setAttribute("id", `favOption${i}`);
+function renderFavorites(){
+  $("#favorites").empty();
+  console.log(storedFavorites);
+  for ( let i = 0; i < storedFavorites.length; i++){
+    var favDiv = document.createElement("div");
+        favDiv.classList.add("subtitle");
+        favDiv.setAttribute("id", `favOption${i}`);
         
-//         var name = document.createElement("a");
-//         var price = document.createElement("p");
-//         var phone = document.createElement("p");
-//         var genre = document.createElement("p");
+        var name = document.createElement("a");
+        var price = document.createElement("p");
+        var phone = document.createElement("p");
+        var genre = document.createElement("p");
 
-//         name.textContent = data.businesses[i].name;
-//         name.setAttribute("href", data.businesses[i].url);
-//         name.setAttribute("target", "_blank");
-//         price.textContent = data.businesses[i].price;
-//         phone.textContent = data.businesses[i].display_phone;
-//         genre.textContent = data.businesses[i].categories[0].title;
-//   }
-// }
+        name.textContent = storedFavorites[i].name.textContent;
+        name.setAttribute("href", storedFavorites[0].link.textContent);
+        name.setAttribute("target", "_blank");
+        price.textContent = storedFavorites[i].price.textContent;
+        phone.textContent = storedFavorites[i].phone.textContent;
+        genre.textContent = storedFavorites[i].genre.textContent;
 
-// renderFavorites();
+        favDiv.append(name);
+        favDiv.append(genre);
+        favDiv.append(phone);
+        favDiv.append(price);
+
+        $("#favorites").append(favDiv);
+  }
+}
+
+renderFavorites();
