@@ -40,6 +40,7 @@ function foodOptions(cat) {
       for (let i = 0; i < data.businesses.length; i++){
         var optionDiv = document.createElement("div");
         optionDiv.classList.add("subtitle");
+        optionDiv.setAttribute("id", `option${i}`);
         
         var name = document.createElement("a");
         var price = document.createElement("p");
@@ -58,6 +59,7 @@ function foodOptions(cat) {
         favButton.classList.add("button");
         favButton.classList.add("is-warning");
         favButton.classList.add("is-small");
+        favButton.setAttribute("id", `favButton${i}`)
        
         
         optionDiv.append(name);
@@ -73,9 +75,13 @@ function foodOptions(cat) {
         favButton.addEventListener("click", addFavorite);
 
         function addFavorite(event){
-          var favSelect = event.target.parentNode.innerHTML;
-          console.log(favSelect);
-          localStorage.setItem("favSelect", JSON.stringify(favSelect)); //its saving an empty object to local storage
+          var storageObject = {name: optionDiv.children[0].textContent,
+          genre: optionDiv.children[1].textContent,
+          phone: optionDiv.children[2].textContent,
+          price: optionDiv.children[3].textContent}
+        
+          console.log(storageObject);
+          localStorage.setItem("storageObject", JSON.stringify(storageObject)); 
         }
        
         // name.addEventListener("click", foodPage)
