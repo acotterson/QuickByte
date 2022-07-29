@@ -8,6 +8,7 @@ var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLL
 var lat;
 var long;
 var storedFavArr = [];
+var storedFavorites = JSON.parse(localStorage.getItem("storedFavArr")) || [];
 
 
 var dropdown = document.querySelector('.dropdown');
@@ -57,7 +58,7 @@ function foodOptions(cat) {
         var favButton = document.createElement("button");
         
         name.textContent = data.businesses[i].name;
-        name.setAttribute("href", data.businesses[i].url); // I added this in stead of the event listener for the link so that the link gets saved into local storage. I was worried the scope will get screwed up otherwise.
+        name.setAttribute("href", data.businesses[i].url);
         name.setAttribute("target", "_blank");
         price.textContent = data.businesses[i].price;
         phone.textContent = data.businesses[i].display_phone;
@@ -85,7 +86,8 @@ function foodOptions(cat) {
         function addFavorite(event){
           var thisOption = event.target.parentNode;
           console.log(thisOption)
-          var storageObject = {name: thisOption.children[0].textContent,
+          var storageObject = {link: thisOption.children[0].href,
+          name: thisOption.children[0].textContent,
           genre: thisOption.children[1].textContent,
           phone: thisOption.children[2].textContent,
           price: thisOption.children[3].textContent}
@@ -112,6 +114,26 @@ function foodOptions(cat) {
   });
 };
 
-function renderFavorites(){
+// function renderFavorites(){
+//   $("#favorites").empty();
+//   for ( let i = 0; i < storedFavorites; i++){
+//     console.log(storedFavorites);
+//     var favDiv = document.createElement("div");
+//         favDiv.classList.add("subtitle");
+//         fav.setAttribute("id", `favOption${i}`);
+        
+//         var name = document.createElement("a");
+//         var price = document.createElement("p");
+//         var phone = document.createElement("p");
+//         var genre = document.createElement("p");
 
-}
+//         name.textContent = data.businesses[i].name;
+//         name.setAttribute("href", data.businesses[i].url);
+//         name.setAttribute("target", "_blank");
+//         price.textContent = data.businesses[i].price;
+//         phone.textContent = data.businesses[i].display_phone;
+//         genre.textContent = data.businesses[i].categories[0].title;
+//   }
+// }
+
+// renderFavorites();
