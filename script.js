@@ -1,22 +1,74 @@
 var foodButton = document.getElementById("foodButton");
 var restaurantDiv = document.getElementById("restaurant-div")
 var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugitive", "Armageddon", "The Ten Commandments", "It (1990)", "Office Space"]
-
+var favButtons = []
 // var clientId = "YYWJyEGNmX3-tIsEH8Pf7w";
 
 var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx";
 var lat;
 var long;
-var storedFavArr = [];
-var storedFavorites = JSON.parse(localStorage.getItem("storedFavArr")) || [];
+
+var storedFavorites = JSON.parse(localStorage.getItem("storedFavorites")) || [];
 console.log(storedFavorites);
 
+
+
+function renderFavorites(){
+  $("#favorites").empty();
+  console.log(storedFavorites);
+  for ( let i = 0; i < storedFavorites.length; i++){
+    var favDiv = document.createElement("div");
+        favDiv.classList.add("subtitle");
+        favDiv.setAttribute("id", `favOption${i}`);
+        favDiv.classList.add("is-size-6");
+        
+        var name = document.createElement("a");
+        var price = document.createElement("p");
+        var phone = document.createElement("p");
+        var genre = document.createElement("p");
+
+        name.textContent = storedFavorites[i].name;
+        name.setAttribute("href", storedFavorites[0].link);
+        name.setAttribute("target", "_blank");
+        price.textContent = storedFavorites[i].price;
+        phone.textContent = storedFavorites[i].phone;
+        genre.textContent = storedFavorites[i].genre;
+
+        favDiv.append(name);
+        favDiv.append(genre);
+        favDiv.append(phone);
+        favDiv.append(price);
+
+        $("#favorites").append(favDiv);
+  }
+}
+
+renderFavorites()
+
+function addFavorite(favButtonID){
+  // console.log(favButtonID)
+  var selectedFavButton = document.getElementById(favButtonID);
+  var thisOption = selectedFavButton.parentElement;
+  // console.log(thisOption)
+  var storageObject = {link: thisOption.children[0].href,
+  name: thisOption.children[0].textContent,
+  genre: thisOption.children[1].textContent,
+  phone: thisOption.children[2].textContent,
+  price: thisOption.children[3].textContent}
+
+  console.log(storageObject);
+  storedFavorites.push(storageObject);
+  console.log(storedFavorites);
+  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites));          
+  renderFavorites();
+}
 
 var dropdown = document.querySelector('.dropdown');
 dropdown.addEventListener('click', function(event) {
   event.stopPropagation();
   dropdown.classList.toggle('is-active');
 });
+
 
 var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
@@ -70,7 +122,8 @@ function foodOptions(cat) {
         favButton.classList.add("is-warning");
         favButton.classList.add("is-small");
         favButton.setAttribute("id", `favButton${i}`)
-       
+        favButton.setAttribute('onClick', 'addFavorite(this.id)');
+        // favButtons.append(favButton);
         
         optionDiv.append(name);
         optionDiv.append(genre);
@@ -82,23 +135,8 @@ function foodOptions(cat) {
         restaurantDiv.append(optionDiv);
         console.log(optionDiv)
 
-        favButton.addEventListener("click", addFavorite);
-
-        function addFavorite(event){
-          var thisOption = event.target.parentNode;
-          console.log(thisOption)
-          var storageObject = {link: thisOption.children[0].href,
-          name: thisOption.children[0].textContent,
-          genre: thisOption.children[1].textContent,
-          phone: thisOption.children[2].textContent,
-          price: thisOption.children[3].textContent}
         
-          console.log(storageObject);
-          storedFavArr.push(storageObject);
-          console.log(storedFavArr);
-          localStorage.setItem("storedFavArr", JSON.stringify(storedFavArr)); 
-        }
-       
+        
         // name.addEventListener("click", foodPage)
         // function foodPage() {
           // window.open(data.businesses[i].url);
@@ -114,35 +152,3 @@ function foodOptions(cat) {
     // longText.innerText = long.toFixed(2);
   });
 };
-
-function renderFavorites(){
-  $("#favorites").empty();
-  console.log(storedFavorites);
-  for ( let i = 0; i < storedFavorites.length; i++){
-    var favDiv = document.createElement("div");
-        favDiv.classList.add("subtitle");
-        favDiv.setAttribute("id", `favOption${i}`);
-        favDiv.classList.add("is-size-6");
-        
-        var name = document.createElement("a");
-        var price = document.createElement("p");
-        var phone = document.createElement("p");
-        var genre = document.createElement("p");
-
-        name.textContent = storedFavorites[i].name;
-        name.setAttribute("href", storedFavorites[0].link);
-        name.setAttribute("target", "_blank");
-        price.textContent = storedFavorites[i].price;
-        phone.textContent = storedFavorites[i].phone;
-        genre.textContent = storedFavorites[i].genre;
-
-        favDiv.append(name);
-        favDiv.append(genre);
-        favDiv.append(phone);
-        favDiv.append(price);
-
-        $("#favorites").append(favDiv);
-  }
-}
-
-renderFavorites();
