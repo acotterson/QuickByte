@@ -30,20 +30,50 @@ function renderFavorites(){
         name.textContent = storedFavorites[i].name;
         name.setAttribute("href", storedFavorites[0].link);
         name.setAttribute("target", "_blank");
+        name.style.position = 'absolute';
+        name.style.left = '1.5em';
         price.textContent = storedFavorites[i].price;
         phone.textContent = storedFavorites[i].phone;
         genre.textContent = storedFavorites[i].genre;
 
+        
+        var removeFavButton = document.createElement("button");
+        removeFavButton.innerHTML = "&#x2715;";
+        removeFavButton.classList.add("button");
+        removeFavButton.classList.add("is-danger");
+        removeFavButton.classList.add("is-small");
+        removeFavButton.style.fontSize = '5px';
+        removeFavButton.style.display = 'inline';
+        // removeFavButton.style.postion = 'absolute';
+        removeFavButton.style.top = '1em';
+        removeFavButton.style.right = '4em';
+        removeFavButton.setAttribute("id", `removeFavButton${i}`);
+        removeFavButton.setAttribute("onClick", `removeFavorite(${i})`);
+        
+        
+
+        favDiv.append(removeFavButton);
         favDiv.append(name);
         favDiv.append(genre);
         favDiv.append(phone);
         favDiv.append(price);
+
+
+
 
         $("#favorites").append(favDiv);
   }
 }
 
 renderFavorites()
+
+function removeFavorite(favID) {
+  console.log(favID);
+  storedFavorites.splice(favID,1);
+  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites)); 
+
+  renderFavorites();
+}
 
 function addFavorite(favButtonID){
   // console.log(favButtonID)
@@ -152,3 +182,4 @@ function foodOptions(cat) {
     // longText.innerText = long.toFixed(2);
   });
 };
+
