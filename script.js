@@ -31,7 +31,7 @@ function renderFavorites(){
         name.setAttribute("href", storedFavorites[0].link);
         name.setAttribute("target", "_blank");
         name.style.position = 'absolute';
-        name.style.left = '7.5%';
+        name.style.left = '1.5em';
         price.textContent = storedFavorites[i].price;
         phone.textContent = storedFavorites[i].phone;
         genre.textContent = storedFavorites[i].genre;
@@ -46,7 +46,7 @@ function renderFavorites(){
         removeFavButton.style.display = 'inline';
         // removeFavButton.style.postion = 'absolute';
         removeFavButton.style.top = '1em';
-        removeFavButton.style.right = '7%';
+        removeFavButton.style.right = '4em';
         removeFavButton.setAttribute("id", `removeFavButton${i}`);
         removeFavButton.setAttribute("onClick", `removeFavorite(${i})`);
         
