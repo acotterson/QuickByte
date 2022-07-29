@@ -8,6 +8,13 @@ var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLL
 var lat;
 var long;
 
+
+var dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function(event) {
+  event.stopPropagation();
+  dropdown.classList.toggle('is-active');
+});
+
 var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
 // var longText = document.getElementById("longitude");
