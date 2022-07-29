@@ -122,18 +122,19 @@ function renderFavorites(){
     var favDiv = document.createElement("div");
         favDiv.classList.add("subtitle");
         favDiv.setAttribute("id", `favOption${i}`);
+        favDiv.classList.add("is-size-6");
         
         var name = document.createElement("a");
         var price = document.createElement("p");
         var phone = document.createElement("p");
         var genre = document.createElement("p");
 
-        name.textContent = storedFavorites[i].name.textContent;
-        name.setAttribute("href", storedFavorites[0].link.textContent);
+        name.textContent = storedFavorites[i].name;
+        name.setAttribute("href", storedFavorites[0].link);
         name.setAttribute("target", "_blank");
-        price.textContent = storedFavorites[i].price.textContent;
-        phone.textContent = storedFavorites[i].phone.textContent;
-        genre.textContent = storedFavorites[i].genre.textContent;
+        price.textContent = storedFavorites[i].price;
+        phone.textContent = storedFavorites[i].phone;
+        genre.textContent = storedFavorites[i].genre;
 
         favDiv.append(name);
         favDiv.append(genre);
