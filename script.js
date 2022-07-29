@@ -7,6 +7,7 @@ var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugit
 var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx";
 var lat;
 var long;
+var storedFavArr = [];
 
 
 var dropdown = document.querySelector('.dropdown');
@@ -20,7 +21,7 @@ var button = document.getElementById("get-location");
 // var longText = document.getElementById("longitude");
 
 // foodButton.addEventListener("click", foodOptions)
-$(".dropdown").on("click", "button", catHandler)
+$(".dropdown-menu").on("click", "button", catHandler)
 
 function catHandler() {
   var cat = $(this).attr("id")
@@ -82,13 +83,17 @@ function foodOptions(cat) {
         favButton.addEventListener("click", addFavorite);
 
         function addFavorite(event){
-          var storageObject = {name: optionDiv.children[0].textContent,
-          genre: optionDiv.children[1].textContent,
-          phone: optionDiv.children[2].textContent,
-          price: optionDiv.children[3].textContent}
+          var thisOption = event.target.parentNode;
+          console.log(thisOption)
+          var storageObject = {name: thisOption.children[0].textContent,
+          genre: thisOption.children[1].textContent,
+          phone: thisOption.children[2].textContent,
+          price: thisOption.children[3].textContent}
         
           console.log(storageObject);
-          localStorage.setItem("storageObject", JSON.stringify(storageObject)); 
+          storedFavArr.push(storageObject);
+          console.log(storedFavArr);
+          localStorage.setItem("storedFavArr", JSON.stringify(storedFavArr)); 
         }
        
         // name.addEventListener("click", foodPage)
@@ -107,3 +112,6 @@ function foodOptions(cat) {
   });
 };
 
+function renderFavorites(){
+
+}
