@@ -6,3 +6,9 @@
     padding-top: 0px;
     padding-bottom: 0px;
 } 
+
+.card {
+    background-color:black;
+    margin-top: 1;
+    margin-bottom: 1;
+}

@@ -119,11 +119,21 @@ function renderFavorites(){
   $("#favorites").empty();
   console.log(storedFavorites);
   for ( let i = 0; i < storedFavorites.length; i++){
+    var card = document.createElement("div")
+      card.classList.add("card")
+      card.classList.add("m-4")
+      card.classList.add("p-3")
+      card.classList.add("is-flex")
+      card.classList.add("is-justify-content-center")
     var favDiv = document.createElement("div");
         favDiv.classList.add("subtitle");
         favDiv.setAttribute("id", `favOption${i}`);
         favDiv.classList.add("is-size-6");
-        
+        favDiv.classList.add("cardContent");
+ 
+        var content = document.createElement("div")
+          content.classList.add("content")
+
         var name = document.createElement("a");
         var price = document.createElement("p");
         var phone = document.createElement("p");
@@ -136,12 +146,15 @@ function renderFavorites(){
         phone.textContent = storedFavorites[i].phone;
         genre.textContent = storedFavorites[i].genre;
 
-        favDiv.append(name);
-        favDiv.append(genre);
-        favDiv.append(phone);
-        favDiv.append(price);
+        content.append(name);
+        content.append(genre);
+        content.append(phone);
+        content.append(price);
 
-        $("#favorites").append(favDiv);
+        favDiv.append(content);
+        card.append(favDiv)
+
+        $("#favorites").append(card);
   }
 }
 
