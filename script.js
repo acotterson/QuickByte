@@ -19,6 +19,7 @@ function renderFavorites(){
   for ( let i = 0; i < storedFavorites.length; i++){
     var favDiv = document.createElement("div");
         favDiv.classList.add("subtitle");
+        // favDiv.classList.add("is-flex");
         favDiv.setAttribute("id", `favOption${i}`);
         favDiv.classList.add("is-size-6");
         
@@ -132,7 +133,11 @@ function foodOptions(cat) {
       for (let i = 0; i < data.businesses.length; i++){
         var optionDiv = document.createElement("div");
         optionDiv.classList.add("subtitle");
+        optionDiv.classList.add("card");
         optionDiv.setAttribute("id", `option${i}`);
+
+        var cardContent = document.createElement("div");
+        cardContent.classList.add("card-content");
         
         var name = document.createElement("a");
         var price = document.createElement("p");
@@ -143,9 +148,13 @@ function foodOptions(cat) {
         name.textContent = data.businesses[i].name;
         name.setAttribute("href", data.businesses[i].url);
         name.setAttribute("target", "_blank");
+        name.classList.add("content");
         price.textContent = data.businesses[i].price;
+        price.classList.add("content");
         phone.textContent = data.businesses[i].display_phone;
+        phone.classList.add("content");
         genre.textContent = data.businesses[i].categories[0].title;
+        genre.classList.add("content");
         
         favButton.textContent = "Add to Favorites";
         favButton.classList.add("button");
@@ -155,11 +164,13 @@ function foodOptions(cat) {
         favButton.setAttribute('onClick', 'addFavorite(this.id)');
         // favButtons.append(favButton);
         
-        optionDiv.append(name);
-        optionDiv.append(genre);
-        optionDiv.append(phone);
-        optionDiv.append(price);
-        optionDiv.append(favButton);
+        cardContent.append(name);
+        cardContent.append(genre);
+        cardContent.append(phone);
+        cardContent.append(price);
+        cardContent.append(favButton);
+
+        optionDiv.append(cardContent);
         
         name.classList.add("button-result");
         restaurantDiv.append(optionDiv);
