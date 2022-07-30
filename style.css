@@ -6,3 +6,17 @@
     padding-top: 0px;
     padding-bottom: 0px;
 } 
+
+.footer {
+    padding: 1rem;
+  }
+  
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#wrapper {
+    flex: 1;
+  }
