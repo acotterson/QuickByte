@@ -2,6 +2,9 @@
     box-sizing: border-box;
 }
 
+body {
+    /* background-color: black; */
+}
 .dropcontent {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -19,4 +22,8 @@ body {
 
 #wrapper {
     flex: 1;
+<<<<<<< HEAD
 }
+=======
+ }
+>>>>>>> 72687e4f938524a208adfed01eac5d6481b31670
