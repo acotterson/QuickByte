@@ -23,7 +23,3 @@ body {
 #wrapper {
     flex: 1;
 }
-
-#drop-button {
-    width: fit-content;
-}
