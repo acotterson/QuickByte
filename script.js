@@ -1,6 +1,5 @@
 var foodButton = document.getElementById("foodButton");
 var restaurantDiv = document.getElementById("restaurant-div")
-var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugitive", "Armageddon", "The Ten Commandments", "It (1990)", "Office Space"]
 var favButtons = []
 // var clientId = "YYWJyEGNmX3-tIsEH8Pf7w";
 
@@ -14,17 +13,22 @@ console.log(storedFavorites);
 
 
 function renderFavorites() {
-  $("#favorites").empty();
+  $("#favSection").empty();
   var favDivTitle = document.createElement("h2");
   favDivTitle.classList.add("subtitle");
   favDivTitle.textContent = "Favorites";
-  $("#favorites").append(favDivTitle);
+  $("#favSection").append(favDivTitle);
 
   console.log(storedFavorites);
   for (let i = 0; i < storedFavorites.length; i++) {
     var favDiv = document.createElement("div");
-    favDiv.classList.add("subtitle","is-size-6");
+    var favDiv1 = document.createElement("div");
+    var favDiv2 = document.createElement("div");
+    favDiv.classList.add("subtitle","is-size-6","columns");
     favDiv.setAttribute("id", `favOption${i}`);
+    favDiv1.classList.add("column","is-10");
+    favDiv2.classList.add("column", "is-2");
+
 
     var name = document.createElement("a");
     var price = document.createElement("p");
@@ -34,7 +38,7 @@ function renderFavorites() {
     name.textContent = storedFavorites[i].name;
     name.setAttribute("href", storedFavorites[i].link);
     name.setAttribute("target", "_blank");
-    name.style.position = 'absolute';
+    // name.style.position = 'absolute';
     name.style.left = '1.5em';
     price.textContent = storedFavorites[i].price;
     phone.textContent = storedFavorites[i].phone;
@@ -54,16 +58,19 @@ function renderFavorites() {
 
 
 
-    favDiv.append(removeFavButton);
-    favDiv.append(name);
-    favDiv.append(genre);
-    favDiv.append(phone);
-    favDiv.append(price);
+    favDiv2.append(removeFavButton);
+    favDiv1.append(name);
+    favDiv1.append(genre);
+    favDiv1.append(phone);
+    favDiv1.append(price);
+
+    favDiv.append(favDiv1);
+    favDiv.append(favDiv2);
 
 
 
 
-    $("#favorites").append(favDiv);
+    $("#favSection").append(favDiv);
   }
 }
 
