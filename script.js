@@ -17,17 +17,14 @@ function renderFavorites() {
   $("#favorites").empty();
   var favDivTitle = document.createElement("h2");
   favDivTitle.classList.add("subtitle");
-  favDivTitle.classList.add("subtitle");
   favDivTitle.textContent = "Favorites";
   $("#favorites").append(favDivTitle);
 
   console.log(storedFavorites);
   for (let i = 0; i < storedFavorites.length; i++) {
     var favDiv = document.createElement("div");
-    favDiv.classList.add("subtitle");
-    // favDiv.classList.add("is-flex");
+    favDiv.classList.add("subtitle","is-size-6");
     favDiv.setAttribute("id", `favOption${i}`);
-    favDiv.classList.add("is-size-6");
 
     var name = document.createElement("a");
     var price = document.createElement("p");
@@ -35,7 +32,7 @@ function renderFavorites() {
     var genre = document.createElement("p");
 
     name.textContent = storedFavorites[i].name;
-    name.setAttribute("href", storedFavorites[0].link);
+    name.setAttribute("href", storedFavorites[i].link);
     name.setAttribute("target", "_blank");
     name.style.position = 'absolute';
     name.style.left = '1.5em';
@@ -46,9 +43,7 @@ function renderFavorites() {
 
     var removeFavButton = document.createElement("button");
     removeFavButton.innerHTML = "&#x2715;";
-    removeFavButton.classList.add("button");
-    removeFavButton.classList.add("is-danger");
-    removeFavButton.classList.add("is-small");
+    removeFavButton.classList.add("button","is-small","is-danger");
     removeFavButton.style.fontSize = '5px';
     removeFavButton.style.display = 'inline';
     // removeFavButton.style.postion = 'absolute';
@@ -140,8 +135,7 @@ function foodOptions(cat) {
 
       for (let i = 0; i < data.businesses.length; i++) {
         var optionDiv = document.createElement("div");
-        optionDiv.classList.add("subtitle");
-        optionDiv.classList.add("card");
+        optionDiv.classList.add("subtitle","card");
         optionDiv.setAttribute("id", `option${i}`);
 
         var cardContent = document.createElement("div");
@@ -156,7 +150,7 @@ function foodOptions(cat) {
         name.textContent = data.businesses[i].name;
         name.setAttribute("href", data.businesses[i].url);
         name.setAttribute("target", "_blank");
-        name.classList.add("content");
+        name.classList.add("content","button-result");
         price.textContent = data.businesses[i].price;
         price.classList.add("content");
         phone.textContent = data.businesses[i].display_phone;
@@ -165,9 +159,7 @@ function foodOptions(cat) {
         genre.classList.add("content");
 
         favButton.textContent = "Add to Favorites";
-        favButton.classList.add("button");
-        favButton.classList.add("is-warning");
-        favButton.classList.add("is-small");
+        favButton.classList.add("button", "is-warning", "is-small");
         favButton.setAttribute("id", `favButton${i}`)
         favButton.setAttribute('onClick', 'addFavorite(this.id)');
         // favButtons.append(favButton);
@@ -180,7 +172,6 @@ function foodOptions(cat) {
 
         optionDiv.append(cardContent);
 
-        name.classList.add("button-result");
         restaurantDiv.append(optionDiv);
         console.log(optionDiv)
 
