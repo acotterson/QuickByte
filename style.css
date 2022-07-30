@@ -13,7 +13,7 @@ body {
 .footer {
     padding: 1rem;
   }
-  
+
 body {
     display: flex;
     min-height: 100vh;
@@ -22,4 +22,8 @@ body {
 
 #wrapper {
     flex: 1;
+<<<<<<< HEAD
+}
+=======
  }
+>>>>>>> 72687e4f938524a208adfed01eac5d6481b31670
