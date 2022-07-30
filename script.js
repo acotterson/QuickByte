@@ -13,56 +13,62 @@ console.log(storedFavorites);
 
 
 
-function renderFavorites(){
+function renderFavorites() {
   $("#favorites").empty();
+  var favDivTitle = document.createElement("h2");
+  favDivTitle.classList.add("subtitle");
+  favDivTitle.classList.add("subtitle");
+  favDivTitle.textContent = "Favorites";
+  $("#favorites").append(favDivTitle);
+
   console.log(storedFavorites);
-  for ( let i = 0; i < storedFavorites.length; i++){
+  for (let i = 0; i < storedFavorites.length; i++) {
     var favDiv = document.createElement("div");
-        favDiv.classList.add("subtitle");
-        // favDiv.classList.add("is-flex");
-        favDiv.setAttribute("id", `favOption${i}`);
-        favDiv.classList.add("is-size-6");
-        
-        var name = document.createElement("a");
-        var price = document.createElement("p");
-        var phone = document.createElement("p");
-        var genre = document.createElement("p");
+    favDiv.classList.add("subtitle");
+    // favDiv.classList.add("is-flex");
+    favDiv.setAttribute("id", `favOption${i}`);
+    favDiv.classList.add("is-size-6");
 
-        name.textContent = storedFavorites[i].name;
-        name.setAttribute("href", storedFavorites[0].link);
-        name.setAttribute("target", "_blank");
-        name.style.position = 'absolute';
-        name.style.left = '1.5em';
-        price.textContent = storedFavorites[i].price;
-        phone.textContent = storedFavorites[i].phone;
-        genre.textContent = storedFavorites[i].genre;
+    var name = document.createElement("a");
+    var price = document.createElement("p");
+    var phone = document.createElement("p");
+    var genre = document.createElement("p");
 
-        
-        var removeFavButton = document.createElement("button");
-        removeFavButton.innerHTML = "&#x2715;";
-        removeFavButton.classList.add("button");
-        removeFavButton.classList.add("is-danger");
-        removeFavButton.classList.add("is-small");
-        removeFavButton.style.fontSize = '5px';
-        removeFavButton.style.display = 'inline';
-        // removeFavButton.style.postion = 'absolute';
-        removeFavButton.style.top = '1em';
-        removeFavButton.style.right = '4em';
-        removeFavButton.setAttribute("id", `removeFavButton${i}`);
-        removeFavButton.setAttribute("onClick", `removeFavorite(${i})`);
-        
-        
+    name.textContent = storedFavorites[i].name;
+    name.setAttribute("href", storedFavorites[0].link);
+    name.setAttribute("target", "_blank");
+    name.style.position = 'absolute';
+    name.style.left = '1.5em';
+    price.textContent = storedFavorites[i].price;
+    phone.textContent = storedFavorites[i].phone;
+    genre.textContent = storedFavorites[i].genre;
 
-        favDiv.append(removeFavButton);
-        favDiv.append(name);
-        favDiv.append(genre);
-        favDiv.append(phone);
-        favDiv.append(price);
+
+    var removeFavButton = document.createElement("button");
+    removeFavButton.innerHTML = "&#x2715;";
+    removeFavButton.classList.add("button");
+    removeFavButton.classList.add("is-danger");
+    removeFavButton.classList.add("is-small");
+    removeFavButton.style.fontSize = '5px';
+    removeFavButton.style.display = 'inline';
+    // removeFavButton.style.postion = 'absolute';
+    removeFavButton.style.top = '1em';
+    removeFavButton.style.right = '4em';
+    removeFavButton.setAttribute("id", `removeFavButton${i}`);
+    removeFavButton.setAttribute("onClick", `removeFavorite(${i})`);
 
 
 
+    favDiv.append(removeFavButton);
+    favDiv.append(name);
+    favDiv.append(genre);
+    favDiv.append(phone);
+    favDiv.append(price);
 
-        $("#favorites").append(favDiv);
+
+
+
+    $("#favorites").append(favDiv);
   }
 }
 
@@ -70,32 +76,34 @@ renderFavorites()
 
 function removeFavorite(favID) {
   console.log(favID);
-  storedFavorites.splice(favID,1);
-  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites)); 
+  storedFavorites.splice(favID, 1);
+  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites));
 
   renderFavorites();
 }
 
-function addFavorite(favButtonID){
+function addFavorite(favButtonID) {
   // console.log(favButtonID)
   var selectedFavButton = document.getElementById(favButtonID);
   var thisOption = selectedFavButton.parentElement;
   // console.log(thisOption)
-  var storageObject = {link: thisOption.children[0].href,
-  name: thisOption.children[0].textContent,
-  genre: thisOption.children[1].textContent,
-  phone: thisOption.children[2].textContent,
-  price: thisOption.children[3].textContent}
+  var storageObject = {
+    link: thisOption.children[0].href,
+    name: thisOption.children[0].textContent,
+    genre: thisOption.children[1].textContent,
+    phone: thisOption.children[2].textContent,
+    price: thisOption.children[3].textContent
+  }
 
   console.log(storageObject);
   storedFavorites.push(storageObject);
   console.log(storedFavorites);
-  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites));          
+  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites));
   renderFavorites();
 }
 
 var dropdown = document.querySelector('.dropdown');
-dropdown.addEventListener('click', function(event) {
+dropdown.addEventListener('click', function (event) {
   event.stopPropagation();
   dropdown.classList.toggle('is-active');
 });
@@ -115,22 +123,22 @@ function catHandler() {
 
 function foodOptions(cat) {
   $("#restaurant-div").empty();
-  navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function (position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude="+ lat +"&longitude=" + long;
-    $.ajax( {
-      url:yelp,
+    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude=" + lat + "&longitude=" + long;
+    $.ajax({
+      url: yelp,
       headers: {
         "Authorization": 'Bearer JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx',
         "accept": "application/json",
         "x-requested-with": "xmlhttprequest",
-        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Origin": "*",
       }
-    }).then(function(data){
+    }).then(function (data) {
       console.log(data)
 
-      for (let i = 0; i < data.businesses.length; i++){
+      for (let i = 0; i < data.businesses.length; i++) {
         var optionDiv = document.createElement("div");
         optionDiv.classList.add("subtitle");
         optionDiv.classList.add("card");
@@ -138,13 +146,13 @@ function foodOptions(cat) {
 
         var cardContent = document.createElement("div");
         cardContent.classList.add("card-content");
-        
+
         var name = document.createElement("a");
         var price = document.createElement("p");
         var phone = document.createElement("p");
         var genre = document.createElement("p");
         var favButton = document.createElement("button");
-        
+
         name.textContent = data.businesses[i].name;
         name.setAttribute("href", data.businesses[i].url);
         name.setAttribute("target", "_blank");
@@ -155,7 +163,7 @@ function foodOptions(cat) {
         phone.classList.add("content");
         genre.textContent = data.businesses[i].categories[0].title;
         genre.classList.add("content");
-        
+
         favButton.textContent = "Add to Favorites";
         favButton.classList.add("button");
         favButton.classList.add("is-warning");
@@ -163,7 +171,7 @@ function foodOptions(cat) {
         favButton.setAttribute("id", `favButton${i}`)
         favButton.setAttribute('onClick', 'addFavorite(this.id)');
         // favButtons.append(favButton);
-        
+
         cardContent.append(name);
         cardContent.append(genre);
         cardContent.append(phone);
@@ -171,26 +179,25 @@ function foodOptions(cat) {
         cardContent.append(favButton);
 
         optionDiv.append(cardContent);
-        
+
         name.classList.add("button-result");
         restaurantDiv.append(optionDiv);
         console.log(optionDiv)
 
-        
-        
+
+
         // name.addEventListener("click", foodPage)
         // function foodPage() {
-          // window.open(data.businesses[i].url);
+        // window.open(data.businesses[i].url);
         //   }
-        
+
       }
-      
+
     })
-    
+
     console.log(lat.toFixed(2))
     console.log(long.toFixed(2))
     // latText.innerText = lat.toFixed(2);
     // longText.innerText = long.toFixed(2);
   });
 };
-
