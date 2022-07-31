@@ -1,3 +1,10 @@
+:root {
+    --dark: #00296b;
+    --light: #fdc500;
+    --midtone: #003f88;
+    --highlight: #ffd500;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,19 +16,26 @@
 
 .footer {
     padding: 1rem;
+    background-color: var(--midtone);
+    color: var(--light)
   }
 
-body {
+  .title {
+    font-family:
+  }
+
+
+  body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: var(--midtone);
 }
 
 #wrapper {
     flex: 1;
-}
-
-#main-section {
     background-image: url("./images/back.jpeg");
     background-size: 100% auto;
+    
 }
+
