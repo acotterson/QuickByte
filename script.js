@@ -142,7 +142,7 @@ function foodOptions(cat) {
 
       for (let i = 0; i < data.businesses.length; i++) {
         var optionDiv = document.createElement("div");
-        optionDiv.classList.add("subtitle","card");
+        optionDiv.classList.add("subtitle","card", "is-size-6");
         optionDiv.setAttribute("id", `option${i}`);
 
         var cardContent = document.createElement("div");
@@ -166,7 +166,7 @@ function foodOptions(cat) {
         genre.classList.add("content");
 
         favButton.textContent = "Add to Favorites";
-        favButton.classList.add("button", "is-warning", "is-small");
+        favButton.classList.add("button", "is-warning", "is-small", "is-size-6");
         favButton.setAttribute("id", `favButton${i}`)
         favButton.setAttribute('onClick', 'addFavorite(this.id)');
         // favButtons.append(favButton);

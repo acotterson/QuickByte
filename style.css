@@ -72,6 +72,7 @@
     flex: 1;
     background-image: url("./images/back.jpeg");
     background-size: 100% auto;
+<<<<<<< HEAD
     
 }
 
@@ -83,4 +84,8 @@
 
 .card-content {
     font-family: 'Oswald', sans-serif;
+=======
+    height: 100vh;
+
+>>>>>>> 824dc3b01a3b0b5f43ae156ec0c66cc9f6a3b594
 }
