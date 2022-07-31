@@ -28,37 +28,36 @@
     font-family: 'Oswald', sans-serif;
 }
 
-#pizza {
-    font-family: 'Oswald', sans-serif;
-}
-
-#hotdogs {
-    font-family: 'Oswald', sans-serif;
-}
-#italian {
-    font-family: 'Oswald', sans-serif;
-}
-#tradamerican {
-    font-family: 'Oswald', sans-serif;
-}
-#newamerican {
-    font-family: 'Oswald', sans-serif;
-}
-#asianfusion {
-    font-family: 'Oswald', sans-serif;
-}
-#bakeries {
-    font-family: 'Oswald', sans-serif;
-}
-#burgers {
-    font-family: 'Oswald', sans-serif;
-}
-#chinese {
-    font-family: 'Oswald', sans-serif;
-}
-#japanese {
-    font-family: 'Oswald', sans-serif;
-}
+    #pizza {
+        font-family: 'Oswald', sans-serif;
+    }
+    #hotdogs {
+        font-family: 'Oswald', sans-serif;
+    }
+    #italian {
+        font-family: 'Oswald', sans-serif;
+    }
+    #tradamerican {
+        font-family: 'Oswald', sans-serif;
+    }
+    #newamerican {
+        font-family: 'Oswald', sans-serif;
+    }
+    #asianfusion {
+        font-family: 'Oswald', sans-serif;
+    }
+    #bakeries {
+        font-family: 'Oswald', sans-serif;
+    }
+    #burgers {
+        font-family: 'Oswald', sans-serif;
+    }
+    #chinese {
+        font-family: 'Oswald', sans-serif;
+    }
+    #japanese {
+        font-family: 'Oswald', sans-serif;
+    }
 
   body {
     display: flex;
@@ -72,7 +71,6 @@
     flex: 1;
     background-image: url("./images/back.jpeg");
     background-size: 100% auto;
-<<<<<<< HEAD
     
 }
 
@@ -84,8 +82,4 @@
 
 .card-content {
     font-family: 'Oswald', sans-serif;
-=======
-    height: 100vh;
-
->>>>>>> 824dc3b01a3b0b5f43ae156ec0c66cc9f6a3b594
 }
