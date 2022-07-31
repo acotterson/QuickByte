@@ -20,10 +20,6 @@
     color: var(--light)
   }
 
-.title {
-    font-family: 'Oswald', sans-serif;
-}
-
 #drop-button {
     font-family: 'Oswald', sans-serif;
 }
@@ -82,4 +78,8 @@
 
 .card-content {
     font-family: 'Oswald', sans-serif;
+}
+
+#title-font {
+    font-family: 'Pacifico', cursive;
 }
