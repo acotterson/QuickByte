@@ -20,16 +20,52 @@
     color: var(--light)
   }
 
-  .title {
-    font-family:
-  }
+.title {
+    font-family: 'Oswald', sans-serif;
+}
 
+#drop-button {
+    font-family: 'Oswald', sans-serif;
+}
+
+#pizza {
+    font-family: 'Oswald', sans-serif;
+}
+
+#hotdogs {
+    font-family: 'Oswald', sans-serif;
+}
+#italian {
+    font-family: 'Oswald', sans-serif;
+}
+#tradamerican {
+    font-family: 'Oswald', sans-serif;
+}
+#newamerican {
+    font-family: 'Oswald', sans-serif;
+}
+#asianfusion {
+    font-family: 'Oswald', sans-serif;
+}
+#bakeries {
+    font-family: 'Oswald', sans-serif;
+}
+#burgers {
+    font-family: 'Oswald', sans-serif;
+}
+#chinese {
+    font-family: 'Oswald', sans-serif;
+}
+#japanese {
+    font-family: 'Oswald', sans-serif;
+}
 
   body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     background-color: var(--midtone);
+    font-family: 'Oswald', sans-serif;
 }
 
 #wrapper {
@@ -39,3 +75,12 @@
     
 }
 
+.card {
+    border-radius: 15px;
+    background-color: var(--dark);
+    color: var(--highlight);
+}
+
+.card-content {
+    font-family: 'Oswald', sans-serif;
+}
