@@ -1,22 +1,115 @@
 var foodButton = document.getElementById("foodButton");
 var restaurantDiv = document.getElementById("restaurant-div")
-var movies = ["Doctor Sleep", "The Notebook", "Coraline", "The Room", "The Fugitive", "Armageddon", "The Ten Commandments", "It (1990)", "Office Space"]
-
+var favButtons = []
 // var clientId = "YYWJyEGNmX3-tIsEH8Pf7w";
 
 var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx";
 var lat;
 var long;
-var storedFavArr = [];
-var storedFavorites = JSON.parse(localStorage.getItem("storedFavArr")) || [];
+
+var storedFavorites = JSON.parse(localStorage.getItem("storedFavorites")) || [];
 console.log(storedFavorites);
 
 
+
+function renderFavorites() {
+  $("#favSection").empty();
+  var favDivTitle = document.createElement("h2");
+  favDivTitle.classList.add("subtitle");
+  favDivTitle.textContent = "Favorites";
+  $("#favSection").append(favDivTitle);
+
+  console.log(storedFavorites);
+  for (let i = 0; i < storedFavorites.length; i++) {
+    var favDiv = document.createElement("div");
+    var favDiv1 = document.createElement("div");
+    var favDiv2 = document.createElement("div");
+    favDiv.classList.add("subtitle","is-size-6","columns");
+    favDiv.setAttribute("id", `favOption${i}`);
+    favDiv1.classList.add("column","is-10");
+    favDiv2.classList.add("column", "is-2");
+
+
+    var name = document.createElement("a");
+    var price = document.createElement("p");
+    var phone = document.createElement("p");
+    var genre = document.createElement("p");
+
+    name.textContent = storedFavorites[i].name;
+    name.setAttribute("href", storedFavorites[i].link);
+    name.setAttribute("target", "_blank");
+    // name.style.position = 'absolute';
+    name.style.left = '1.5em';
+    price.textContent = storedFavorites[i].price;
+    phone.textContent = storedFavorites[i].phone;
+    genre.textContent = storedFavorites[i].genre;
+
+
+    var removeFavButton = document.createElement("button");
+    removeFavButton.innerHTML = "&#x2715;";
+    removeFavButton.classList.add("button","is-small","is-danger");
+    removeFavButton.style.fontSize = '5px';
+    removeFavButton.style.display = 'inline';
+    // removeFavButton.style.postion = 'absolute';
+    removeFavButton.style.top = '1em';
+    removeFavButton.style.right = '4em';
+    removeFavButton.setAttribute("id", `removeFavButton${i}`);
+    removeFavButton.setAttribute("onClick", `removeFavorite(${i})`);
+
+
+
+    favDiv2.append(removeFavButton);
+    favDiv1.append(name);
+    favDiv1.append(genre);
+    favDiv1.append(phone);
+    favDiv1.append(price);
+
+    favDiv.append(favDiv1);
+    favDiv.append(favDiv2);
+
+
+
+
+    $("#favSection").append(favDiv);
+  }
+}
+
+renderFavorites()
+
+function removeFavorite(favID) {
+  console.log(favID);
+  storedFavorites.splice(favID, 1);
+  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites));
+
+  renderFavorites();
+}
+
+function addFavorite(favButtonID) {
+  // console.log(favButtonID)
+  var selectedFavButton = document.getElementById(favButtonID);
+  var thisOption = selectedFavButton.parentElement;
+  // console.log(thisOption)
+  var storageObject = {
+    link: thisOption.children[0].href,
+    name: thisOption.children[0].textContent,
+    genre: thisOption.children[1].textContent,
+    phone: thisOption.children[2].textContent,
+    price: thisOption.children[3].textContent
+  }
+
+  console.log(storageObject);
+  storedFavorites.push(storageObject);
+  console.log(storedFavorites);
+  localStorage.setItem("storedFavorites", JSON.stringify(storedFavorites));
+  renderFavorites();
+}
+
 var dropdown = document.querySelector('.dropdown');
-dropdown.addEventListener('click', function(event) {
+dropdown.addEventListener('click', function (event) {
   event.stopPropagation();
   dropdown.classList.toggle('is-active');
 });
+
 
 var button = document.getElementById("get-location");
 // var latText = document.getElementById("latitude");
@@ -32,130 +125,77 @@ function catHandler() {
 
 function foodOptions(cat) {
   $("#restaurant-div").empty();
-  navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function (position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude="+ lat +"&longitude=" + long;
-    $.ajax( {
-      url:yelp,
+    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude=" + lat + "&longitude=" + long;
+    $.ajax({
+      url: yelp,
       headers: {
         "Authorization": 'Bearer JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx',
         "accept": "application/json",
         "x-requested-with": "xmlhttprequest",
-        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Origin": "*",
       }
-    }).then(function(data){
+    }).then(function (data) {
       console.log(data)
 
-      for (let i = 0; i < data.businesses.length; i++){
+      for (let i = 0; i < data.businesses.length; i++) {
         var optionDiv = document.createElement("div");
-        optionDiv.classList.add("subtitle");
+        optionDiv.classList.add("subtitle","card", "is-size-6");
         optionDiv.setAttribute("id", `option${i}`);
-        
+
+        var cardContent = document.createElement("div");
+        cardContent.classList.add("card-content");
+
         var name = document.createElement("a");
         var price = document.createElement("p");
         var phone = document.createElement("p");
         var genre = document.createElement("p");
         var favButton = document.createElement("button");
-        
+
         name.textContent = data.businesses[i].name;
         name.setAttribute("href", data.businesses[i].url);
         name.setAttribute("target", "_blank");
+        name.classList.add("content","button-result");
         price.textContent = data.businesses[i].price;
+        price.classList.add("content");
         phone.textContent = data.businesses[i].display_phone;
+        phone.classList.add("content");
         genre.textContent = data.businesses[i].categories[0].title;
-        
+        genre.classList.add("content");
+
         favButton.textContent = "Add to Favorites";
-        favButton.classList.add("button");
-        favButton.classList.add("is-warning");
-        favButton.classList.add("is-small");
+        favButton.classList.add("button", "is-warning", "is-small", "is-size-6");
         favButton.setAttribute("id", `favButton${i}`)
-       
-        
-        optionDiv.append(name);
-        optionDiv.append(genre);
-        optionDiv.append(phone);
-        optionDiv.append(price);
-        optionDiv.append(favButton);
-        
-        name.classList.add("button-result");
+        favButton.setAttribute('onClick', 'addFavorite(this.id)');
+        // favButtons.append(favButton);
+
+        cardContent.append(name);
+        cardContent.append(genre);
+        cardContent.append(phone);
+        cardContent.append(price);
+        cardContent.append(favButton);
+
+        optionDiv.append(cardContent);
+
         restaurantDiv.append(optionDiv);
         console.log(optionDiv)
 
-        favButton.addEventListener("click", addFavorite);
 
-        function addFavorite(event){
-          var thisOption = event.target.parentNode;
-          console.log(thisOption)
-          var storageObject = {link: thisOption.children[0].href,
-          name: thisOption.children[0].textContent,
-          genre: thisOption.children[1].textContent,
-          phone: thisOption.children[2].textContent,
-          price: thisOption.children[3].textContent}
-        
-          console.log(storageObject);
-          storedFavArr.push(storageObject);
-          console.log(storedFavArr);
-          localStorage.setItem("storedFavArr", JSON.stringify(storedFavArr)); 
-        }
-       
+
         // name.addEventListener("click", foodPage)
         // function foodPage() {
-          // window.open(data.businesses[i].url);
+        // window.open(data.businesses[i].url);
         //   }
-        
+
       }
-      
+
     })
-    
+
     console.log(lat.toFixed(2))
     console.log(long.toFixed(2))
     // latText.innerText = lat.toFixed(2);
     // longText.innerText = long.toFixed(2);
   });
 };
-
-function renderFavorites(){
-  $("#favorites").empty();
-  console.log(storedFavorites);
-  for ( let i = 0; i < storedFavorites.length; i++){
-    var card = document.createElement("div")
-      card.classList.add("card")
-      card.classList.add("m-4")
-      card.classList.add("p-3")
-      card.classList.add("is-flex")
-      card.classList.add("is-justify-content-center")
-    var favDiv = document.createElement("div");
-        favDiv.classList.add("subtitle");
-        favDiv.setAttribute("id", `favOption${i}`);
-        favDiv.classList.add("is-size-6");
-        favDiv.classList.add("cardContent");
- 
-        var content = document.createElement("div")
-          content.classList.add("content")
-
-        var name = document.createElement("a");
-        var price = document.createElement("p");
-        var phone = document.createElement("p");
-        var genre = document.createElement("p");
-
-        name.textContent = storedFavorites[i].name;
-        name.setAttribute("href", storedFavorites[0].link);
-        name.setAttribute("target", "_blank");
-        price.textContent = storedFavorites[i].price;
-        phone.textContent = storedFavorites[i].phone;
-        genre.textContent = storedFavorites[i].genre;
-
-        content.append(name);
-        content.append(genre);
-        content.append(phone);
-        content.append(price);
-
-        favDiv.append(content);
-        card.append(favDiv)
-
-        $("#favorites").append(card);
-  }
-}
-
-renderFavorites();
