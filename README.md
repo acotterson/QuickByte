@@ -4,7 +4,7 @@
 
 Quickbyte is a simple way to reduce the amount of time you spend picking a restaurant by narrowing your optoins down to a few restaurants that are in your area.
 
-Quickbyte uses the Geolocation API and the Yelp Fusion API to generate nearby restaurants within 2 miles (3.2 kilometers). 
+Quickbyte uses the Geolocation API and the Yelp Fusion API to generate nearby restaurants that are open within about 3 miles (5 kilometers). 
 
 ## Usage
 
