@@ -1,7 +1,7 @@
 var foodButton = document.getElementById("foodButton");
 var restaurantDiv = document.getElementById("restaurant-div")
 var favButtons = []
-// var clientId = "YYWJyEGNmX3-tIsEH8Pf7w";
+
 
 var APIKey = "JK2o6xaFthzRfO--_lKdin6AtHopMHSKQogItiUUqiuKs6cv5S9fl4gvHEt0mqDPLLDHDekwyNM5HeI9Oc82S6EiUSSY9wszqG8nYpX13JSTHYGpbVF_qi-veRjaYnYx";
 var lat;
@@ -112,10 +112,7 @@ dropdown.addEventListener('click', function (event) {
 
 
 var button = document.getElementById("get-location");
-// var latText = document.getElementById("latitude");
-// var longText = document.getElementById("longitude");
 
-// foodButton.addEventListener("click", foodOptions)
 $(".dropdown-menu").on("click", "button", catHandler)
 
 function catHandler() {
@@ -128,7 +125,7 @@ function foodOptions(cat) {
   navigator.geolocation.getCurrentPosition(function (position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://bootcamp-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=6&open_now=true&latitude=" + lat + "&longitude=" + long;
+    var yelp = "https://bootcamp-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=6&open_now=true&latitude=" + lat + "&longitude=" + long + "&radius=3220";
     $.ajax({
       url: yelp,
       headers: {
