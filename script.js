@@ -128,7 +128,8 @@ function foodOptions(cat) {
   navigator.geolocation.getCurrentPosition(function (position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude=" + lat + "&longitude=" + long;
+    // var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=6&open_now=true&latitude=" + lat + "&longitude=" + long;
+    var yelp = "https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=6&open_now=true&latitude=" + lat + "&longitude=" + long;
     $.ajax({
       url: yelp,
       headers: {
