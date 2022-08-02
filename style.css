@@ -104,8 +104,16 @@ a:hover {
 a:visited {
     color: gray
 }
-@media screen and (min-width: 770px) {
-    .media {
+@media screen and (max-width: 770px) {
+    #favSection {
+        margin-left: 7rem;
+        max-width: 60%;
+    }
+}
+@media screen and (max-width: 430px) {
+    #favSection {
+        margin-left: 0.5rem;
+        max-width: 80%;
         
     }
 }
