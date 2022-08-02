@@ -76,6 +76,7 @@
     border-radius: 15px;
     background-color: var(--dark);
     color: var(--highlight);
+    max-height: 250px;
 }
 
 .card-content {
