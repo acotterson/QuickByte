@@ -1,3 +1,10 @@
+:root {
+    --dark: #00296b;
+    --light: #fdc500;
+    --midtone: #003f88;
+    --highlight: #ffd500;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,21 +16,91 @@
 
 .footer {
     padding: 1rem;
+    background-color: var(--midtone);
+    color: var(--light)
   }
 
-body {
+#drop-button {
+    font-family: 'Oswald', sans-serif;
+}
+
+    #pizza {
+        font-family: 'Oswald', sans-serif;
+    }
+    #hotdogs {
+        font-family: 'Oswald', sans-serif;
+    }
+    #italian {
+        font-family: 'Oswald', sans-serif;
+    }
+    #tradamerican {
+        font-family: 'Oswald', sans-serif;
+    }
+    #newamerican {
+        font-family: 'Oswald', sans-serif;
+    }
+    #asianfusion {
+        font-family: 'Oswald', sans-serif;
+    }
+    #bakeries {
+        font-family: 'Oswald', sans-serif;
+    }
+    #burgers {
+        font-family: 'Oswald', sans-serif;
+    }
+    #chinese {
+        font-family: 'Oswald', sans-serif;
+    }
+    #japanese {
+        font-family: 'Oswald', sans-serif;
+    }
+
+  body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: var(--midtone);
+    font-family: 'Oswald', sans-serif;
 }
 
 #wrapper {
     flex: 1;
-}
-
-#main-section {
     background-image: url("./images/back.jpeg");
-    background-size: 100% auto;
-    height: 100vh;
-
+    background-size: 300%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
 }
+
+.card {
+    border-radius: 15px;
+    background-color: var(--dark);
+    color: var(--highlight);
+}
+
+.card-content {
+    font-family: 'Oswald', sans-serif;
+    font-size:large;
+}
+
+#title-font {
+    font-family: 'Pacifico', cursive;
+}
+
+a {
+    color: var(highlight);
+    font-weight: bolder;
+}
+
+a:link {
+    color: var(--highlight)
+}
+
+a:hover {
+    color: white
+}
+
+a:visited {
+    color: gray
+}
+
