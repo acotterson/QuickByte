@@ -103,4 +103,8 @@ a:hover {
 a:visited {
     color: gray
 }
-
+@media screen and (min-width: 770px) {
+    .media {
+        
+    }
+}
