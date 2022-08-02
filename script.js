@@ -23,7 +23,7 @@ function renderFavorites() {
     var favDiv = document.createElement("div");
     var favDiv1 = document.createElement("div");
     var favDiv2 = document.createElement("div");
-    favDiv.classList.add("subtitle","is-size-6","columns", "is-mobile", "media" );
+    favDiv.classList.add("subtitle","is-size-6","columns", "is-mobile" );
     favDiv.setAttribute("id", `favOption${i}`);
     favDiv1.classList.add("column","is-10");
     favDiv2.classList.add("column", "is-2");

@@ -1,3 +1,4 @@
+/* color scheme variables */
 :root {
     --dark: #00296b;
     --light: #fdc500;
@@ -14,12 +15,14 @@
     padding-bottom: 0px;
 } 
 
+/* footer formating */
 .footer {
     padding: 1rem;
     background-color: var(--midtone);
     color: var(--light)
   }
 
+/* dropdown menu and button */
 #drop-button {
     font-family: 'Oswald', sans-serif;
 }
@@ -55,14 +58,15 @@
         font-family: 'Oswald', sans-serif;
     }
 
-  body {
+/* title section */
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
     background-color: var(--midtone);
     font-family: 'Oswald', sans-serif;
 }
-
+/* main section for restuarant div */
 #wrapper {
     flex: 1;
     background-image: url("./images/back.jpeg");
@@ -71,23 +75,23 @@
     background-attachment: fixed;
     
 }
-
+/* restuarant card formatting */
 .card {
     border-radius: 15px;
     background-color: var(--dark);
     color: var(--highlight);
     max-height: 250px;
 }
-
+/* restuarant card font formatting */
 .card-content {
     font-family: 'Oswald', sans-serif;
     font-size:large;
 }
-
+/* Logo font */
 #title-font {
     font-family: 'Pacifico', cursive;
 }
-
+/* link formatting */
 a {
     color: var(highlight);
     font-weight: bolder;
@@ -104,10 +108,11 @@ a:hover {
 a:visited {
     color: gray
 }
+/*size format for fav section based on window size*/
 @media screen and (max-width: 770px) {
     #favSection {
         margin-left: 7rem;
-        max-width: 60%;
+        max-width: 70%;
     }
 }
 @media screen and (max-width: 430px) {
