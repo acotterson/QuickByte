@@ -24,7 +24,7 @@ function renderFavorites() {
     var favDiv = document.createElement("div");
     var favDiv1 = document.createElement("div");
     var favDiv2 = document.createElement("div");
-    favDiv.classList.add("subtitle","is-size-6","columns");
+    favDiv.classList.add("subtitle","is-size-6","columns", "is-mobile", "media" );
     favDiv.setAttribute("id", `favOption${i}`);
     favDiv1.classList.add("column","is-10");
     favDiv2.classList.add("column", "is-2");
@@ -128,7 +128,7 @@ function foodOptions(cat) {
   navigator.geolocation.getCurrentPosition(function (position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    var yelp = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude=" + lat + "&longitude=" + long;
+    var yelp = "https://bootcamp-cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=" + cat + "&limit=5&open_now=true&latitude=" + lat + "&longitude=" + long;
     $.ajax({
       url: yelp,
       headers: {
