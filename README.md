@@ -19,3 +19,4 @@ Upon loading the page, selected favorites will be rendered on the right side of 
 Link to Deployed Application: https://acorbridg.github.io/Project1/
 
 Screenshot:
+![acorbridg github io_Project1_](https://user-images.githubusercontent.com/104692375/182275324-cf355e53-86fe-419c-b27f-b893b4053310.png)
