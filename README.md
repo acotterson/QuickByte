@@ -1,4 +1,4 @@
-# Project1 - QuickByte
+# QuickByte
 
 ## Description
 
